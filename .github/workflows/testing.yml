@@ -8,23 +8,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: echo "Testing 2!"
-  wait:
+  test-3:
+    runs-on: ubuntu-latest
+    needs: [test-1, test-2]
+    environment:
+      name: Testing
+      url: https://google.com
+    steps:
+    - run: echo "We did it"
+  test-4:
     runs-on: ubuntu-latest
     needs: [test-1, test-2]
     environment:
       name: Testing
       url: https://example.com
-    steps:
-    - run: echo "Poggers"
-  test-3:
-    runs-on: ubuntu-latest
-    needs: wait
-    environment: Testing
-    steps:
-    - run: echo "We did it"
-  test-4:
-    runs-on: ubuntu-latest
-    needs: wait
-    environment: Testing
     steps:
     - run: echo "We did it"
